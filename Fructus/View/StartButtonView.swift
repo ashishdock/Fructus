@@ -9,13 +9,23 @@ import SwiftUI
 
 struct StartButtonView: View {
     //MARK: - PROPERTIES
-    
+    @AppStorage("isOnboarding") var isOnboarding: Bool?
     
     //MARK: - BODY
     
+    
+//        print("isOnboarding value is \(String(describing: isOnboarding))")
+    
     var body: some View {
         Button(action: {
-            print("Exit the onboarding")
+            if isOnboarding == true {
+                isOnboarding = false
+                print("Exit the onboarding")
+                print("isOnboarding value after pressing button is \(String(describing: isOnboarding))")
+            } else {
+                isOnboarding = true
+                print("Not changing isOnboarding value because it is \(String(describing: isOnboarding))")
+            }
         }) {
             HStack(spacing: 8) {
                 Text("Start")
